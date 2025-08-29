@@ -22,7 +22,7 @@ function createPlayer (name, mark) {
 };
 
 function gameState () {
-
+    
 };
 
 const player1 = createPlayer('tom', 'X');
@@ -32,3 +32,11 @@ console.log('everything works!');
 console.log(player1);
 console.log(player2);
 
+//used to quickly show rough layout of board
+function displayBoard() {
+    console.log(gameBoard.board[0][0] + '#' + gameBoard.board[0][1] + '#' + gameBoard.board[0][2] + 
+    '\n#####' + '\n' + 
+    gameBoard.board[1][0] + '#' + gameBoard.board[1][1] + '#' + gameBoard.board[1][2] + 
+    '\n#####' + '\n' + 
+    gameBoard.board[2][0] + '#' + gameBoard.board[2][1] + '#' + gameBoard.board[2][2]);
+}
