@@ -1,42 +1,88 @@
+/* module pattern create game board and any components that go with it, set spot values */
 const gameBoard = (function () {
-    let board = [
-            [0, 0, 0],
-            [0, 0, 0],
-            [0, 0, 0]
-        ];
-    const getSquare = (index1, index2) => {
-        return board[index1][index2];
-    };
+    const rows = 3;
+    const columns = 3;
+    const board = [];
+    
+        for (var i = 0; i< rows; i++) {
+            board[i] = [];
+            for (var j = 0; j < columns; j++) {
+                board[i].push(cell());
+            }
+        }
 
-    const setSquare = (index1, index2) => {
-        board[index1][index2] = mark;
-    };
+        const getBoard = () => board;
 
-    return {board, getSquare, setSquare};
+        const placeMarker = (column, player) => {
+
+            const availableSpot = board.filter((row) => row[column].getValue() === 0).map(row => row[column]);
+
+            if (!availableSpot.length) return;
+
+            const openSpot = availableSpot.length - 1;
+            board[openSpot][column].addMark(player);
+        };
+
+        const printBoard = () => {
+            const boardWithSpotValues = board.map((row) => row.map((spot) => spot.getValue()))
+            console.log(boardWithSpotValues);
+        };
+
+        return {getBoard, placeMarker, printBoard};
 })();
 
-function createPlayer (name, mark) {
-    const playerName = name;
-    const playerMark = mark;
-    return {playerName, playerMark};
-};
+function cell() {
+    let value = 0;
 
-function gameState () {
-    
-};
+    const addMark = (player) => {
+        value = player;
+    };
 
-const player1 = createPlayer('tom', 'X');
-const player2 = createPlayer('bill', 'O');
+    const getValue = () => value;
 
-console.log('everything works!');
-console.log(player1);
-console.log(player2);
-
-//used to quickly show rough layout of board
-function displayBoard() {
-    console.log(gameBoard.board[0][0] + '#' + gameBoard.board[0][1] + '#' + gameBoard.board[0][2] + 
-    '\n#####' + '\n' + 
-    gameBoard.board[1][0] + '#' + gameBoard.board[1][1] + '#' + gameBoard.board[1][2] + 
-    '\n#####' + '\n' + 
-    gameBoard.board[2][0] + '#' + gameBoard.board[2][1] + '#' + gameBoard.board[2][2]);
+    return {addMark, getValue};
 }
+
+function gameController(
+    playerOneName = 'Player One',
+    playerTwoName = 'Player Two'
+) {
+    const board = gameBoard;
+
+    const players = [
+            {
+                name: playerOneName,
+                mark: 'X'
+            },
+            {
+                name: playerTwoName,
+                mark: 'O'
+            }
+    ];
+
+    let currentPlayer = players[0];
+
+    const switchPlayerTurn = () => {
+
+    };
+    const getCurrentPlayer = () => currentPlayer;
+
+    const printNewTurn = () => {
+        board.printBoard();
+        console.log(getCurrentPlayer().name + ' is taking their turn now.');
+    };
+
+    playTurn = (column) => {
+        console.log('Placing ' + getCurrentPlayer().mark + ' for ' + getCurrentPlayer().name);
+        board.placeMarker(column, getCurrentPlayer().mark);
+
+        switchPlayerTurn();
+        printNewTurn();
+    };
+
+    printNewTurn();
+    return {playTurn};
+    
+}
+
+const game = gameController();
