@@ -1,36 +1,34 @@
 /* module pattern create game board and any components that go with it, set spot values */
 const gameBoard = (function () {
-    const rows = 3;
-    const columns = 3;
-    const board = [];
-    
-        for (var i = 0; i< rows; i++) {
-            board[i] = [];
-            for (var j = 0; j < columns; j++) {
-                board[i].push(cell());
-            }
-        }
+
+    const board = Array(9).fill().map(() => cell());
 
         const getBoard = () => board;
 
-        const placeMarker = (column, player) => {
+        const placeMarker = (spot, player) => {
 
-            const availableSpot = board.filter((row) => row[column].getValue() === 0).map(row => row[column]);
-
-            if (!availableSpot.length) return;
-
-            const openSpot = availableSpot.length - 1;
-            board[openSpot][column].addMark(player);
+            if (board[spot].getValue() === 0) {
+                console.log(board[spot] + ' is where this turn is being played');
+                board[spot].addMark(player);
+            }
+            else {
+                console.log('this was an invalid move');
+                return; 
+            }
         };
-
+        
         const printBoard = () => {
-            const boardWithSpotValues = board.map((row) => row.map((spot) => spot.getValue()))
-            console.log(boardWithSpotValues);
+            const values = board.map((cell) => cell.getValue());
+        
+            for (let i = 0; i < 9; i += 3) {
+                console.log(values.slice(i, i, 3).join(' | '));
+            }
         };
 
         return {getBoard, placeMarker, printBoard};
 })();
 
+/* cell/mark factory */
 function cell() {
     let value = 0;
 
@@ -43,6 +41,7 @@ function cell() {
     return {addMark, getValue};
 }
 
+/* factory for controller gamestate, player turns, win con */
 function gameController(
     playerOneName = 'Player One',
     playerTwoName = 'Player Two'
@@ -72,9 +71,9 @@ function gameController(
         console.log(getCurrentPlayer().name + ' is taking their turn now.');
     };
 
-    playTurn = (column) => {
+    playTurn = (spot) => {
         console.log('Placing ' + getCurrentPlayer().mark + ' for ' + getCurrentPlayer().name);
-        board.placeMarker(column, getCurrentPlayer().mark);
+        board.placeMarker(spot, getCurrentPlayer().mark);
 
         switchPlayerTurn();
         printNewTurn();
