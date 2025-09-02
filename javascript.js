@@ -7,10 +7,13 @@ const gameBoard = (function () {
 
         const placeMarker = (spot, player) => {
 
-            if (board[spot].getValue() !== 0) return;
+            if (board[spot].getValue() !== 0) {
+                return false; //this move dooesn't work
+            }
 
             console.log(board[spot] + ' is where this turn is being played');
             board[spot].addMark(player);
+            return true; //this move is good
         };
         
         const printBoard = () => {
@@ -67,7 +70,14 @@ function gameController(
         console.log(getCurrentPlayer().name + ' is taking their turn now.');
     };
 
-    playTurn = (spot) => {
+    const playTurn = (spot) => {
+        const moveSuccessful = board.placeMarker(spot, getCurrentPlayer().mark);
+        //check if current spot is taken
+        if (!moveSuccessful) {
+            console.log('bad move');
+            return; //if spot is taken, don't switch players
+        }
+        
         console.log('Placing ' + getCurrentPlayer().mark + ' for ' + getCurrentPlayer().name);
         board.placeMarker(spot, getCurrentPlayer().mark);
 
