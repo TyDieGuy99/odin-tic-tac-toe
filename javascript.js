@@ -62,7 +62,7 @@ function gameController(
     let currentPlayer = players[0];
 
     const switchPlayerTurn = () => {
-
+        currentPlayer = currentPlayer === players[0] ? players[1] : players[0];
     };
     const getCurrentPlayer = () => currentPlayer;
 
