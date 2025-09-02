@@ -7,14 +7,10 @@ const gameBoard = (function () {
 
         const placeMarker = (spot, player) => {
 
-            if (board[spot].getValue() === 0) {
-                console.log(board[spot] + ' is where this turn is being played');
-                board[spot].addMark(player);
-            }
-            else {
-                console.log('this was an invalid move');
-                return; 
-            }
+            if (board[spot].getValue() !== 0) return;
+
+            console.log(board[spot] + ' is where this turn is being played');
+            board[spot].addMark(player);
         };
         
         const printBoard = () => {
