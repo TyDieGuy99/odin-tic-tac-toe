@@ -19,9 +19,9 @@ const gameBoard = (function () {
         
         const printBoard = () => {
             const values = board.map((cell) => cell.getValue());
-        
+
             for (let i = 0; i < 9; i += 3) {
-                console.log(values.slice(i, i, 3).join(' | '));
+                console.log(values.slice(i, i + 3). join(' | '));
             }
         };
 
