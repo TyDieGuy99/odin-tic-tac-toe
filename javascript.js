@@ -46,6 +46,7 @@ function gameController(
     playerTwoName = 'Player Two'
 ) {
     const board = gameBoard;
+    const boardArray = board.getBoard();
 
     const players = [
             {
@@ -77,33 +78,47 @@ function gameController(
             console.log('bad move');
             return; //if spot is taken, don't switch players
         }
+
+        winningCondition(board);
         
         console.log('Placing ' + getCurrentPlayer().mark + ' for ' + getCurrentPlayer().name);
         board.placeMarker(spot, getCurrentPlayer().mark);
 
         switchPlayerTurn();
         printNewTurn();
+        
     };
 
     const winningCondition = () => {
-        const winningBoard = 
-        [[0, 1 ,2],
-         [3, 4, 5],
-         [6, 7 ,8],
-         [0, 3, 6],
-         [1, 4, 7],
-         [2, 5, 8],
-         [0, 4, 8],
-         [2, 4, 6]];
+        const winningBoards = [
+        [0, 1 ,2],
+        [3, 4, 5],
+        [6, 7 ,8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]
+    ];
 
-         const {a, b, c} = winningBoard;
-         spotA = a.getValue();
-         spotB = b.getValue();
-         spotC = c.getValue();
-    }
+        for (let winCombo of winningBoards) {
+            const [a, b, c] = winCombo;
+            const spotA = boardArray[a].getValue();
+            const spotB = boardArray[b].getValue();
+            const spotC = boardArray[c].getValue();
 
-   
+            if (spotA === spotB && spotB === spotC && spotA !== 0) {
+                console.log('you won');
+                return spotA;
+            }
+            
+        };
 
+         return null;
+
+    };   
+
+    //call on start
     printNewTurn();
     return {playTurn};
     
