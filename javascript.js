@@ -137,9 +137,22 @@ function gameController(
     };
 
     //call on start
+    displayController();
     printNewTurn();
     return {playTurn};
     
 }
+
+function displayController () {
+    const board = gameBoard;
+    const gameBoardDisplay = document.getElementById('gameBoard');
+    gameBoardDisplay.innerHTML = '';
+
+    board.getBoard().forEach(cell => {
+        const gridSpot = document.createElement('div');
+        gridSpot.textContent = cell.getValue();
+        gameBoardDisplay.appendChild(gridSpot);
+    });
+};
 
 const game = gameController();
