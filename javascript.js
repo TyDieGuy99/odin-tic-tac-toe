@@ -115,7 +115,12 @@ function gameController(
             const spotC = board.getBoard()[c].getValue();
 
             if (spotA === spotB && spotB === spotC && spotA !== 0) {
-                console.log('you won ' + spotA);    
+                if (spotA === 'X') {
+                    console.log('you won ' + players[0].name);
+                } else {
+                    console.log('you won ' + players[1].name);
+                }
+                
                 return spotA;
             } 
         };
@@ -127,10 +132,9 @@ function gameController(
     const resetGame = () => {
             board.getBoard().forEach(cell => cell.addMark(0));
             currentPlayer = players[0];
-            console.clear();
             console.log('!!!this is a new game!!!')
             printNewTurn();
-    }
+    };
 
     //call on start
     printNewTurn();
