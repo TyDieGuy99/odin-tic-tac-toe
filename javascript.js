@@ -11,7 +11,7 @@ const gameBoard = (function () {
                 return false; //this move dooesn't work
             }
 
-            console.log(board[spot] + ' is where this turn is being played');
+            console.log(spot + 1 + ' is where this turn is being played');
             board[spot].addMark(player);
             return true; //this move is good
         };
@@ -46,7 +46,6 @@ function gameController(
     playerTwoName = 'Player Two'
 ) {
     const board = gameBoard;
-    const boardArray = board.getBoard();
 
     const players = [
             {
@@ -79,10 +78,18 @@ function gameController(
             return; //if spot is taken, don't switch players
         }
 
-        winningCondition(board);
+        if (winningCondition() !== null) {
+            resetGame();
+            return;
+
+        } else if (board.getBoard().every(cell => cell.getValue() !== 0)) {
+            console.log('this is a tie');
+            resetGame();
+            return;
+
+        }
         
         console.log('Placing ' + getCurrentPlayer().mark + ' for ' + getCurrentPlayer().name);
-        board.placeMarker(spot, getCurrentPlayer().mark);
 
         switchPlayerTurn();
         printNewTurn();
@@ -103,20 +110,27 @@ function gameController(
 
         for (let winCombo of winningBoards) {
             const [a, b, c] = winCombo;
-            const spotA = boardArray[a].getValue();
-            const spotB = boardArray[b].getValue();
-            const spotC = boardArray[c].getValue();
+            const spotA = board.getBoard()[a].getValue();
+            const spotB = board.getBoard()[b].getValue();
+            const spotC = board.getBoard()[c].getValue();
 
             if (spotA === spotB && spotB === spotC && spotA !== 0) {
-                console.log('you won');
+                console.log('you won ' + spotA);    
                 return spotA;
-            }
-            
+            } 
         };
 
          return null;
 
-    };   
+    };
+    
+    const resetGame = () => {
+            board.getBoard().forEach(cell => cell.addMark(0));
+            currentPlayer = players[0];
+            console.clear();
+            console.log('!!!this is a new game!!!')
+            printNewTurn();
+    }
 
     //call on start
     printNewTurn();
