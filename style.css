@@ -12,6 +12,12 @@ body {
     padding: 1em;
 }
 
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 button {
     width: 250px;
     height: 75px;
@@ -22,7 +28,8 @@ button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 1em;
+    padding: 1em;
 }
 
 #playerNames {
