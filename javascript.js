@@ -131,7 +131,7 @@ function gameController(
 
     //call on start
     printNewTurn();
-    return {playTurn, getCurrentPlayer, winningCondition};
+    return {playTurn, getCurrentPlayer, winningCondition, resetGame};
     
 }
 
@@ -139,6 +139,7 @@ function displayController () {
     const gameBoardDisplay = document.getElementById('gameBoard');
     const placeMarkerBtns = gameBoardDisplay.querySelectorAll('button');
     const winnerDisplay = document.getElementById('winner');
+    const resetBtnContainer = document.getElementById('resetBtn');
 
     placeMarkerBtns.forEach(button => {
 
@@ -155,8 +156,20 @@ function displayController () {
             }
         })
     });
+    
     const displayWinner = (winner) => {
         winnerDisplay.innerText = 'The winner is ' + winner;
+        const resetBtn = document.createElement('button');
+        resetBtnContainer.appendChild(resetBtn);
+        resetBtn.textContent = 'Play Again!';
+        resetBtn.onclick = function() {
+            game.resetGame();
+            placeMarkerBtns.forEach(button => {
+                button.innerText = '0';
+            });
+            winnerDisplay.innerText = 'temp';
+            resetBtn.remove();
+        }
     }
 
 };
