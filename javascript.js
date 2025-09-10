@@ -186,12 +186,14 @@ function displayController () {
         resetBtn.textContent = 'Play Again!';
         resetBtn.onclick = function() {
             game.resetGame();
+            playerDisplay.innerText = "It is " + game.getCurrentPlayer().name + `'s turn.`;
             placeMarkerBtns.forEach(button => {
                 button.innerText = '0';
             });
             winnerDisplay.innerText = 'temp';
             resetBtn.remove();
         }
+        
     }
 
     
