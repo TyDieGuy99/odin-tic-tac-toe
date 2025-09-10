@@ -11,7 +11,7 @@ const gameBoard = (function () {
                 return false; //this move dooesn't work
             }
 
-            console.log(spot + 1 + ' is where this turn is being played');
+            console.log('The square being played on is', spot + 1);
             board[spot].addMark(player);
             return true; //this move is good
         };
@@ -79,13 +79,12 @@ function gameController(
         }
 
         if (winningCondition() !== null) {
-            resetGame();
-            return;
+            console.log('The Winner is ' + getCurrentPlayer.name);
+            return getCurrentPlayer().name;
 
         } else if (board.getBoard().every(cell => cell.getValue() !== 0)) {
             console.log('this is a tie');
-            resetGame();
-            return;
+            return 'tie';
 
         }
         
@@ -115,13 +114,7 @@ function gameController(
             const spotC = board.getBoard()[c].getValue();
 
             if (spotA === spotB && spotB === spotC && spotA !== 0) {
-                if (spotA === 'X') {
-                    console.log('you won ' + players[0].name);
-                } else {
-                    console.log('you won ' + players[1].name);
-                }
-                
-                return spotA;
+                return;
             } 
         };
 
@@ -138,22 +131,33 @@ function gameController(
 
     //call on start
     printNewTurn();
-    return {playTurn, getCurrentPlayer};
+    return {playTurn, getCurrentPlayer, winningCondition};
     
 }
 
 function displayController () {
     const gameBoardDisplay = document.getElementById('gameBoard');
-
     const placeMarkerBtns = gameBoardDisplay.querySelectorAll('button');
+    const winnerDisplay = document.getElementById('winner');
 
     placeMarkerBtns.forEach(button => {
 
         button.addEventListener('click', function() {
-            this.innerText = game.getCurrentPlayer().mark;
-            game.playTurn(button.id);
+            if (this.innerText === '0') {
+                this.innerText = game.getCurrentPlayer().mark;
+                const result = game.playTurn(button.id);
+                console.log(result);
+                if (result && result !== 'tie') {
+                    displayWinner(result);
+                } else if (result && result === 'tie') {
+                    winnerDisplay.innerText = 'The game is a tie!';
+                }
+            }
         })
     });
+    const displayWinner = (winner) => {
+        winnerDisplay.innerText = 'The winner is ' + winner;
+    }
 
 };
 
