@@ -142,14 +142,21 @@ function displayController () {
     const resetBtnContainer = document.getElementById('resetBtn');
     const startBtn = document.getElementById('startBtn');
 
+    placeMarkerBtns.forEach(button => {
+        button.disabled = true;
+    })
+
     startBtn.onclick = function() {
         const playerOne = document.getElementById('playerOne').value;
         const playerTwo = document.getElementById('playerTwo').value;
         game = gameController(playerOne, playerTwo);
+        placeMarkerBtns.forEach(button => {
+            button.disabled = false;
+        })
     }
 
     placeMarkerBtns.forEach(button => {
-
+        button.disabled = true;
         button.addEventListener('click', function() {
             if (this.innerText === '0') {
                 this.innerText = game.getCurrentPlayer().mark;
