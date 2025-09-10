@@ -138,9 +138,7 @@ function displayController () {
 
     const gameBoardDisplay = document.getElementById('gameBoard');
     const placeMarkerBtns = gameBoardDisplay.querySelectorAll('button');
-    const winnerDisplay = document.getElementById('winner');
     const gameStatus = document.getElementById('gameStatus');
-    const resetBtnContainer = document.getElementById('resetBtn');
     const playBtn = document.getElementById('playBtn');
 
     placeMarkerBtns.forEach(button => {
@@ -191,8 +189,6 @@ function displayController () {
     }
 
     const resetBtn = () => {
-        // const resetBtn = document.createElement('button');
-        // resetBtnContainer.appendChild(resetBtn);
         playBtn.textContent = 'Play Again!';
         playBtn.disabled = false;
         playBtn.onclick = function() {
@@ -203,13 +199,8 @@ function displayController () {
                 button.innerText = '-';
                 button.disabled = false;
             });
-            // winnerDisplay.innerText = 'temp';
-            // resetBtn.remove();
         }
         
     }
-
-    
-
 };
 displayController();
