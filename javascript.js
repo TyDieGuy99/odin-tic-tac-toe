@@ -146,13 +146,16 @@ function gameController(
 function displayController () {
     const board = gameBoard;
     const gameBoardDisplay = document.getElementById('gameBoard');
-    gameBoardDisplay.innerHTML = '';
 
-    board.getBoard().forEach(cell => {
-        const gridSpot = document.createElement('div');
-        gridSpot.textContent = cell.getValue();
-        gameBoardDisplay.appendChild(gridSpot);
+    const placeMarkerBtns = gameBoardDisplay.querySelectorAll('button');
+
+    placeMarkerBtns.forEach(button => {
+
+        button.addEventListener('click', function() {
+            console.log(button.id);
+        })
     });
+
 };
 
 const game = gameController();
