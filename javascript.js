@@ -171,13 +171,13 @@ function displayController () {
                         button.disabled = true;
                     });
                     displayWinner(result);
-                    resetBtn();
+                    resetGame();
                 } else if (result && result === 'tie') {
                     gameStatus.innerText = 'The game is a tie!';
                     placeMarkerBtns.forEach(button => {
                         button.disabled = true;
                     });
-                    resetBtn();
+                    resetGame();
                 }
             }
         })
@@ -188,7 +188,7 @@ function displayController () {
         
     }
 
-    const resetBtn = () => {
+    const resetGame = () => {
         playBtn.textContent = 'Play Again!';
         playBtn.disabled = false;
         playBtn.onclick = function() {
