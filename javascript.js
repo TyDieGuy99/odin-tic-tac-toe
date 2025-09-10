@@ -155,6 +155,9 @@ function displayController () {
             button.disabled = false;
         });
         playerDisplay.innerText = "It is " + game.getCurrentPlayer().name + `'s turn.`;
+        document.getElementById('playerOne').disabled = true;
+        document.getElementById('playerTwo').disabled = true;
+        startBtn.disabled = true;
     }
 
     placeMarkerBtns.forEach(button => {
