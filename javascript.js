@@ -137,14 +137,12 @@ function gameController(
     };
 
     //call on start
-    displayController();
     printNewTurn();
-    return {playTurn};
+    return {playTurn, getCurrentPlayer};
     
 }
 
 function displayController () {
-    const board = gameBoard;
     const gameBoardDisplay = document.getElementById('gameBoard');
 
     const placeMarkerBtns = gameBoardDisplay.querySelectorAll('button');
@@ -152,10 +150,12 @@ function displayController () {
     placeMarkerBtns.forEach(button => {
 
         button.addEventListener('click', function() {
-            console.log(button.id);
+            this.innerText = game.getCurrentPlayer().mark;
+            game.playTurn(button.id);
         })
     });
 
 };
 
 const game = gameController();
+displayController();
