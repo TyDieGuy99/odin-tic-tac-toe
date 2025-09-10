@@ -139,6 +139,7 @@ function displayController () {
     const gameBoardDisplay = document.getElementById('gameBoard');
     const placeMarkerBtns = gameBoardDisplay.querySelectorAll('button');
     const winnerDisplay = document.getElementById('winner');
+    const playerDisplay = document.getElementById('currentPlayer');
     const resetBtnContainer = document.getElementById('resetBtn');
     const startBtn = document.getElementById('startBtn');
 
@@ -152,7 +153,8 @@ function displayController () {
         game = gameController(playerOne, playerTwo);
         placeMarkerBtns.forEach(button => {
             button.disabled = false;
-        })
+        });
+        playerDisplay.innerText = "It is " + game.getCurrentPlayer().name + `'s turn.`;
     }
 
     placeMarkerBtns.forEach(button => {
@@ -161,6 +163,7 @@ function displayController () {
             if (this.innerText === '0') {
                 this.innerText = game.getCurrentPlayer().mark;
                 const result = game.playTurn(button.id);
+                playerDisplay.innerText = "It is " + game.getCurrentPlayer().name + `'s turn.`;
                 console.log(result);
                 if (result && result !== 'tie') {
                     displayWinner(result);
