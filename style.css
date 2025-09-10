@@ -9,6 +9,12 @@
 body {
     background-color: black;
     color: white;
+    padding: 1em;
+}
+
+button {
+    width: 250px;
+    height: 75px;
 }
 
 #gameControls {
@@ -16,12 +22,15 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 15px;
 }
 
 #playerNames {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    justify-content: space-between;
+    text-align: center;
+    column-gap: 10em;
+    row-gap: 1em;
 }
 
 #gameBoard {
