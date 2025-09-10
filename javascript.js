@@ -146,8 +146,14 @@ function displayController () {
     })
 
     playBtn.onclick = function() {
-        const playerOne = document.getElementById('playerOne').value;
-        const playerTwo = document.getElementById('playerTwo').value;
+        let playerOne = document.getElementById('playerOne').value;
+        if (playerOne=== "") {
+            playerOne= 'Player One';
+        }
+        let playerTwo = document.getElementById('playerTwo').value;
+        if (playerTwo === "") {
+            playerTwo = 'Player Two';
+        }
         game = gameController(playerOne, playerTwo);
         placeMarkerBtns.forEach(button => {
             button.disabled = false;
