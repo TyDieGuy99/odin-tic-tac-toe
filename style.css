@@ -22,7 +22,8 @@ button {
     height: 250px;
 }
 
-#winner {
+#winner,
+#currentPlayer {
     color: white;
     font-size: 32px;
 }
