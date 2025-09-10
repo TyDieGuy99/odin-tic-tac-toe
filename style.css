@@ -18,6 +18,12 @@ h1 {
     align-items: center;
 }
 
+input {
+    height: 3em;
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+}
+
 button {
     width: 250px;
     height: 75px;
@@ -37,7 +43,8 @@ button {
     grid-template-columns: 1fr 1fr;
     text-align: center;
     column-gap: 10em;
-    row-gap: 1em;
+    row-gap: 0.5em;
+    font-size: 1.5rem;
 }
 
 #gameBoard {
@@ -46,11 +53,10 @@ button {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     gap: 5px;
-    padding: 2em;
+    padding: 1em;
 }
 
-#winner,
-#currentPlayer {
+#gameStatus {
     color: white;
     font-size: 32px;
 }
