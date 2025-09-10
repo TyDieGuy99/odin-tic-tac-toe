@@ -139,25 +139,25 @@ function displayController () {
     const gameBoardDisplay = document.getElementById('gameBoard');
     const placeMarkerBtns = gameBoardDisplay.querySelectorAll('button');
     const winnerDisplay = document.getElementById('winner');
-    const playerDisplay = document.getElementById('currentPlayer');
+    const gameStatus = document.getElementById('gameStatus');
     const resetBtnContainer = document.getElementById('resetBtn');
-    const startBtn = document.getElementById('startBtn');
+    const playBtn = document.getElementById('playBtn');
 
     placeMarkerBtns.forEach(button => {
         button.disabled = true;
     })
 
-    startBtn.onclick = function() {
+    playBtn.onclick = function() {
         const playerOne = document.getElementById('playerOne').value;
         const playerTwo = document.getElementById('playerTwo').value;
         game = gameController(playerOne, playerTwo);
         placeMarkerBtns.forEach(button => {
             button.disabled = false;
         });
-        playerDisplay.innerText = "It is " + game.getCurrentPlayer().name + `'s turn.`;
+        gameStatus.innerText = "It is " + game.getCurrentPlayer().name + `'s turn.`;
         document.getElementById('playerOne').disabled = true;
         document.getElementById('playerTwo').disabled = true;
-        startBtn.disabled = true;
+        playBtn.disabled = true;
     }
 
     placeMarkerBtns.forEach(button => {
@@ -166,7 +166,7 @@ function displayController () {
             if (this.innerText === '-') {
                 this.innerText = game.getCurrentPlayer().mark;
                 const result = game.playTurn(button.id);
-                playerDisplay.innerText = "It is " + game.getCurrentPlayer().name + `'s turn.`;
+                gameStatus.innerText = "It is " + game.getCurrentPlayer().name + `'s turn.`;
                 console.log(result);
                 if (result && result !== 'tie') {
                     displayWinner(result);
@@ -189,7 +189,7 @@ function displayController () {
         resetBtn.textContent = 'Play Again!';
         resetBtn.onclick = function() {
             game.resetGame();
-            playerDisplay.innerText = "It is " + game.getCurrentPlayer().name + `'s turn.`;
+            gameStatus.innerText = "It is " + game.getCurrentPlayer().name + `'s turn.`;
             placeMarkerBtns.forEach(button => {
                 button.innerText = '-';
             });
