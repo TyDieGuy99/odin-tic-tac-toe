@@ -150,8 +150,10 @@ function displayController () {
                 console.log(result);
                 if (result && result !== 'tie') {
                     displayWinner(result);
+                    resetBtn();
                 } else if (result && result === 'tie') {
                     winnerDisplay.innerText = 'The game is a tie!';
+                    resetBtn();
                 }
             }
         })
@@ -159,6 +161,9 @@ function displayController () {
     
     const displayWinner = (winner) => {
         winnerDisplay.innerText = 'The winner is ' + winner;
+    }
+
+    const resetBtn = () => {
         const resetBtn = document.createElement('button');
         resetBtnContainer.appendChild(resetBtn);
         resetBtn.textContent = 'Play Again!';
