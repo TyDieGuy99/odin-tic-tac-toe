@@ -169,10 +169,16 @@ function displayController () {
                 gameStatus.innerText = "It is " + game.getCurrentPlayer().name + `'s turn.`;
                 console.log(result);
                 if (result && result !== 'tie') {
+                    placeMarkerBtns.forEach(button => {
+                        button.disabled = true;
+                    });
                     displayWinner(result);
                     resetBtn();
                 } else if (result && result === 'tie') {
-                    winnerDisplay.innerText = 'The game is a tie!';
+                    gameStatus.innerText = 'The game is a tie!';
+                    placeMarkerBtns.forEach(button => {
+                        button.disabled = true;
+                    });
                     resetBtn();
                 }
             }
@@ -180,21 +186,25 @@ function displayController () {
     });
     
     const displayWinner = (winner) => {
-        winnerDisplay.innerText = 'The winner is ' + winner;
+        gameStatus.innerText = 'The winner is ' + winner;
+        
     }
 
     const resetBtn = () => {
-        const resetBtn = document.createElement('button');
-        resetBtnContainer.appendChild(resetBtn);
-        resetBtn.textContent = 'Play Again!';
-        resetBtn.onclick = function() {
+        // const resetBtn = document.createElement('button');
+        // resetBtnContainer.appendChild(resetBtn);
+        playBtn.textContent = 'Play Again!';
+        playBtn.disabled = false;
+        playBtn.onclick = function() {
             game.resetGame();
             gameStatus.innerText = "It is " + game.getCurrentPlayer().name + `'s turn.`;
+            playBtn.disabled = true;
             placeMarkerBtns.forEach(button => {
                 button.innerText = '-';
+                button.disabled = false;
             });
-            winnerDisplay.innerText = 'temp';
-            resetBtn.remove();
+            // winnerDisplay.innerText = 'temp';
+            // resetBtn.remove();
         }
         
     }
