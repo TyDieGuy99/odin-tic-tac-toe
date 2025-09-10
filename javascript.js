@@ -163,7 +163,7 @@ function displayController () {
     placeMarkerBtns.forEach(button => {
         button.disabled = true;
         button.addEventListener('click', function() {
-            if (this.innerText === '0') {
+            if (this.innerText === '-') {
                 this.innerText = game.getCurrentPlayer().mark;
                 const result = game.playTurn(button.id);
                 playerDisplay.innerText = "It is " + game.getCurrentPlayer().name + `'s turn.`;
@@ -191,7 +191,7 @@ function displayController () {
             game.resetGame();
             playerDisplay.innerText = "It is " + game.getCurrentPlayer().name + `'s turn.`;
             placeMarkerBtns.forEach(button => {
-                button.innerText = '0';
+                button.innerText = '-';
             });
             winnerDisplay.innerText = 'temp';
             resetBtn.remove();
