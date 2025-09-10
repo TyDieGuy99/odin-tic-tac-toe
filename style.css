@@ -13,8 +13,10 @@ body {
 
 #gameBoard {
     display: grid;
+    place-self: center;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
+    gap: 5px;
 }
 
 button {
@@ -26,4 +28,9 @@ button {
 #currentPlayer {
     color: white;
     font-size: 32px;
+}
+
+.square {
+    font-size: 128px;
+    margin: 0;
 }
