@@ -10,9 +10,13 @@
 <body>
     <h1>This is the Tic Tac Toe project</h1>
 
-    <div>
-        <input type="text" placeholder="Player One" value="Player One" id="playerOne">
-        <input type="text" placeholder="Player Two" value="Player Two" id="playerTwo">
+    <div id="gameControls">
+        <div id="playerNames">
+            <label for="playerOne">Player One: X</label>     
+            <label for="playerTwo">Player Two: O</label>
+            <input type="text" placeholder="Player One" value="Player One" id="playerOne">
+            <input type="text" placeholder="Player Two" value="Player Two" id="playerTwo">
+        </div>
         <button id="startBtn">start</button>
         <h3 id="currentPlayer">Game has not started.</h3>
     </div>
