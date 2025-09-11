@@ -1,6 +1,9 @@
 :root {
     --bg-primary: #0d1117;
     --txt-primary: #ff6b47;
+    --txt-secondary: #ffb296;
+    --playerOne-primary: #0edee6;
+    --playerTwo-primary: #73bfa6;
 }
 
 * {
@@ -57,6 +60,14 @@ input {
     font-size: 1.5rem;
 }
 
+#playerOneLabel {
+    color: var(--playerOne-primary);
+}
+
+#playerTwoLabel {
+    color: var(--playerTwo-primary);
+}
+
 #gameBoard {
     display: grid;
     width: 90vw;
@@ -72,7 +83,7 @@ input {
 }
 
 #gameStatus {
-    color: white;
+    color: var(--txt-secondary);
     font-size: 32px;
 }
 
