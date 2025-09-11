@@ -45,7 +45,7 @@ input {
     display: grid;
     grid-template-columns: 1fr 1fr;
     text-align: center;
-    column-gap: 10em;
+    column-gap: 3em;
     row-gap: 0.5em;
     font-size: 1.5rem;
 }
@@ -54,8 +54,7 @@ input {
     display: grid;
     place-self: center;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    gap: 5px;
+    grid-gap: 0.5em;
     padding: 1em;
 }
 
@@ -65,7 +64,7 @@ input {
 }
 
 .square {
-    font-size: 128px;
+    font-size: 10rem;
     margin: 0;
     width: 250px;
     height: 250px;
