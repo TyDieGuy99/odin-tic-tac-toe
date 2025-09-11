@@ -1,3 +1,8 @@
+:root {
+    --bg-primary: #0d1117;
+    --txt-primary: #ff6b47;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +12,7 @@
 }
 
 body {
-    background-color: black;
+    background-color: var(--bg-primary);
     color: white;
     padding: 1em;
 }
@@ -17,6 +22,7 @@ h1 {
     justify-content: center;
     align-items: center;
     text-align: center;
+    color: var(--txt-primary);
 }
 
 input {
@@ -62,6 +68,7 @@ input {
     gap: 0.5em;
     padding: 1em;
     text-align: center;
+    background-color: var(--txt-primary);
 }
 
 #gameStatus {
@@ -90,7 +97,6 @@ input {
 }
 
 @media screen and (max-width: 400px) {
-    body,
     #gameControls,
     #gameBoard {
         padding: 0.25em
