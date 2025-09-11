@@ -171,7 +171,7 @@ function displayController () {
     placeMarkerBtns.forEach(button => {
         button.disabled = true;
         button.addEventListener('click', function() {
-            if (this.innerText === '-') {
+            if (this.innerText === '') {
                 this.innerText = game.getCurrentPlayer().mark;
                 this.style.color = game.getCurrentPlayer().color;
                 const result = game.playTurn(button.id);
@@ -207,7 +207,7 @@ function displayController () {
             gameStatus.innerText = "It is " + game.getCurrentPlayer().name + `'s turn.`;
             playBtn.disabled = true;
             placeMarkerBtns.forEach(button => {
-                button.innerText = '-';
+                button.innerText = '';
                 button.disabled = false;
                 button.style.color = 'black';
             });
