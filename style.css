@@ -6,7 +6,7 @@
     --accent-three: #ffebee; /*off-white*/
     --playerOne-primary: #5c4033; /*electric cyan*/
     --playerTwo-primary: #ff7518; /*hot pink*/
-    --accent-three: #ffebee; /*off-pink*
+    --accent-three: #ffebee; /*off-pink*/
 }
 
 * {
@@ -54,6 +54,11 @@ input {
     color: var(--accent-three);
     background-color: var(--accent-one);
     border: 0.1275em solid var(--accent-two);
+    transition: background-color 0.3s ease-in-out;
+}
+
+#playBtn:hover {
+    background-color: var(--primary);
 }
 
 #gameControls {
@@ -69,7 +74,7 @@ input {
     display: grid;
     grid-template-columns: 1fr 1fr;
     text-align: center;
-    column-gap: 3em;
+    column-gap: 2.25em;
     row-gap: 0.5em;
     font-size: 1.5rem;
 }
@@ -85,12 +90,12 @@ input {
 #gameBoard {
     display: grid;
     width: 80vw;
-    max-width: 600px;
+    max-width: 700px;
     aspect-ratio: 1;
     margin: 0 auto;
     justify-content: center;
     grid-template-columns: repeat(3, 1fr);
-    gap: 0.5em;
+    gap: 0.85em;
     padding: 1em;
     text-align: center;
     background-color: var(--primary);
@@ -113,6 +118,14 @@ input {
     background-color: var(--accent-three);
     border-radius: 0.25em;
     border: 0.02em solid var(--accent-one);
+    transform: scale(1);
+    transition: transform 0.35s ease-in-out;
+    transition: border 0.35s ease-in-out;
+}
+
+.square:hover {
+    border: 0.02em solid var(--accent-two);
+    transform: scale(1.05);
 }
 
 @media screen and (max-width: 600px) {
