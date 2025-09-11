@@ -47,11 +47,13 @@ function gameController(playerOneName, playerTwoName) {
     const players = [
             {
                 name: playerOneName,
-                mark: 'X'
+                mark: 'X',
+                color: '#0edee6'
             },
             {
                 name: playerTwoName,
-                mark: 'O'
+                mark: 'O',
+                color: '#73bfa6'
             }
     ];
 
@@ -171,6 +173,7 @@ function displayController () {
         button.addEventListener('click', function() {
             if (this.innerText === '-') {
                 this.innerText = game.getCurrentPlayer().mark;
+                this.style.color = game.getCurrentPlayer().color;
                 const result = game.playTurn(button.id);
                 gameStatus.innerText = "It is " + game.getCurrentPlayer().name + `'s turn.`;
                 console.log(result);
@@ -206,6 +209,7 @@ function displayController () {
             placeMarkerBtns.forEach(button => {
                 button.innerText = '-';
                 button.disabled = false;
+                button.style.color = 'black';
             });
         }
         
