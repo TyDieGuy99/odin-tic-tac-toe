@@ -1,12 +1,12 @@
 :root {
     --bg-primary: #1b0000; /*deep espresso*/
-    --primary: #ff6b47; /*coral*/
+    --primary: #ff8550; /*coral*/
     --accent-one: #3e2723; /*dark brown*/
     --accent-two: #ffb300; /*gold*/
     --accent-three: #ffebee; /*off-white*/
-    --playerOne-primary: #00e5ff; /*electric cyan*/
-    --playerTwo-primary: #e91e63; /*hot pink*/
-    --accent-three: #ffebee; /*off-white*
+    --playerOne-primary: #5c4033; /*electric cyan*/
+    --playerTwo-primary: #ff7518; /*hot pink*/
+    --accent-three: #ffebee; /*off-pink*
 }
 
 * {
@@ -99,7 +99,7 @@ input {
 }
 
 #gameStatus {
-    color: var(--accent-two);
+    color: var(--primary);
     font-size: 32px;
 }
 

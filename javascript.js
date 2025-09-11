@@ -48,12 +48,12 @@ function gameController(playerOneName, playerTwoName) {
             {
                 name: playerOneName,
                 mark: 'X',
-                color: '#00e5ff'
+                color: '#5c4033'
             },
             {
                 name: playerTwoName,
                 mark: 'O',
-                color: '#e91e63'  
+                color: '#ff7518'
             }
     ];
 
