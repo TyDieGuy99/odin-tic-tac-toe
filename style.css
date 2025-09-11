@@ -2,11 +2,11 @@
     --bg-primary: #1b0000; /*deep espresso*/
     --primary: #ff6b47; /*coral*/
     --accent-one: #3e2723; /*dark brown*/
-    --accent-two: #d4af37;
-    --txt-primary: #ffb300; /*gold*/
+    --accent-two: #ffb300; /*gold*/
+    --accent-three: #ffebee; /*off-white*/
     --playerOne-primary: #00e5ff; /*electric cyan*/
     --playerTwo-primary: #e91e63; /*hot pink*/
-    --square-main: #ffebee; /*off-white*.
+    --accent-three: #ffebee; /*off-white*
 }
 
 * {
@@ -31,11 +31,19 @@ h1 {
     color: var(--primary);
 }
 
+h3 {
+    margin: 0 0 0.25em 0;
+}
+
 input {
-    height: 3em;
+    height: 2em;
     font-size: 1rem;
-    padding: 0.75rem 1rem;
+    padding: 0.35em 0.5em;
     border-radius: 0.5em;
+    border: 0.25em solid var(--accent-two);
+    background-color: var(--accent-one);
+    color: var(--accent-three);
+    font-size: 1.25rem;
 }
 
 #playBtn {
@@ -43,6 +51,9 @@ input {
     height: 75px;
     font-size: 2.25rem;
     border-radius: 0.5em;
+    color: var(--accent-three);
+    background-color: var(--accent-one);
+    border: 0.1275em solid var(--accent-two);
 }
 
 #gameControls {
@@ -50,7 +61,7 @@ input {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1em;
+    gap: 1.75em;
     padding: 1em;
 }
 
@@ -88,7 +99,7 @@ input {
 }
 
 #gameStatus {
-    color: var(--txt-primary);
+    color: var(--accent-two);
     font-size: 32px;
 }
 
@@ -99,7 +110,7 @@ input {
     height: 100%;
     text-align: center;
     line-height: 0;
-    background-color: var(--square-main);
+    background-color: var(--accent-three);
     border-radius: 0.25em;
     border: 0.02em solid var(--accent-one);
 }
