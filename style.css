@@ -16,6 +16,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 input {
@@ -75,4 +76,11 @@ input {
     height: 100%;
     text-align: center;
     line-height: 0;
+}
+
+@media screen and (max-width: 600px) {
+    #playerNames {
+        display: flex;
+        flex-direction: column;
+    }
 }
