@@ -154,6 +154,8 @@ function displayController () {
         if (playerTwo === "") {
             playerTwo = 'Player Two';
         }
+        document.getElementById('playerOneLabel').innerText = playerOne + ': X'
+        document.getElementById('playerTwoLabel').innerText = playerTwo + ': O'
         game = gameController(playerOne, playerTwo);
         placeMarkerBtns.forEach(button => {
             button.disabled = false;
