@@ -7,6 +7,7 @@
     --playerOne-primary: #5c4033; /*electric cyan*/
     --playerTwo-primary: #ff7518; /*hot pink*/
     --accent-three: #ffebee; /*off-pink*/
+    --button-hover: #694a45;
 }
 
 * {
@@ -44,6 +45,15 @@ input {
     background-color: var(--accent-one);
     color: var(--accent-three);
     font-size: 1.25rem;
+    transition: background-color 0.3s ease-in-out;
+}
+
+input:focus,
+#playBtn:focus {
+    outline: none;
+    box-shadow: 0 0 1em var(--accent-two);
+    transition: all 0.3s ease-in-out;
+    background-color: var(--button-hover);
 }
 
 #playBtn {
@@ -57,8 +67,9 @@ input {
     transition: background-color 0.3s ease-in-out;
 }
 
-#playBtn:hover {
-    background-color: var(--primary);
+#playBtn:hover,
+input:hover {
+    background-color: var(--button-hover);
 }
 
 #gameControls {
@@ -126,6 +137,10 @@ input {
 .square:hover {
     border: 0.02em solid var(--accent-two);
     transform: scale(1.05);
+}
+
+.square:focus {
+    outline: none;
 }
 
 @media screen and (max-width: 600px) {
