@@ -4,8 +4,8 @@
     --accent-one: #3e2723; /*dark brown*/
     --accent-two: #ffb300; /*gold*/
     --accent-three: #ffebee; /*off-white*/
-    --playerOne-primary: #5c4033; /*electric cyan*/
-    --playerTwo-primary: #ff7518; /*hot pink*/
+    --playerOne-primary: #ff7518; /*electric cyan*/
+    --playerTwo-primary: #00ffff; /*hot pink*/
     --accent-three: #ffebee; /*off-pink*/
     --button-hover: #694a45;
 }
@@ -36,9 +36,8 @@ h3 {
     margin: 0 0 0.25em 0;
 }
 
-input {
-    height: 2em;
-    font-size: 1rem;
+input,
+label {
     padding: 0.35em 0.5em;
     border-radius: 0.5em;
     border: 0.25em solid var(--accent-two);
@@ -46,6 +45,10 @@ input {
     color: var(--accent-three);
     font-size: 1.25rem;
     transition: background-color 0.3s ease-in-out;
+}
+
+label {
+
 }
 
 input:focus,
