@@ -53,7 +53,7 @@ function gameController(playerOneName, playerTwoName) {
             {
                 name: playerTwoName,
                 mark: 'O',
-                color: '#00ffff'
+                color: '#FF69b4'
             }
     ];
 
@@ -190,6 +190,7 @@ function displayController () {
                     });
                     resetGame();
                 }
+                
             }
         })
     });

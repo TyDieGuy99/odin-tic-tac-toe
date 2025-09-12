@@ -5,7 +5,7 @@
     --accent-two: #ffb300; /*gold*/
     --accent-three: #ffebee; /*off-white*/
     --playerOne-primary: #ff7518; /*electric cyan*/
-    --playerTwo-primary: #00ffff; /*hot pink*/
+    --playerTwo-primary: #FF69b4; /*hot pink*/
     --accent-three: #ffebee; /*off-pink*/
     --button-hover: #694a45;
 }
@@ -45,10 +45,6 @@ label {
     color: var(--accent-three);
     font-size: 1.25rem;
     transition: background-color 0.3s ease-in-out;
-}
-
-label {
-
 }
 
 input:focus,
