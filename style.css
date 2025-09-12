@@ -4,7 +4,7 @@
     --accent-one: #3e2723; /*dark brown*/
     --accent-two: #ffb300; /*gold*/
     --accent-three: #ffebee; /*off-white*/
-    --playerOne-primary: #ff7f50; /*electric cyan*/
+    --playerOne-primary: #c9623d; /*electric cyan*/
     --playerTwo-primary: #008b8b; /*hot pink*/
     --accent-three: #ffebee; /*off-pink*/
     --button-hover: #694a45;
@@ -120,6 +120,10 @@ input:hover {
 
 .gameBoardPlayerTwo {
     box-shadow: 0 0 1.75em var(--playerTwo-primary);
+}
+
+.gameBoardTie {
+    box-shadow: 0 0 1.75em var(--accent-two);
 }
 
 #gameStatus {
