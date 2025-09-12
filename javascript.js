@@ -48,7 +48,7 @@ function gameController(playerOneName, playerTwoName) {
             {
                 name: playerOneName,
                 mark: 'X',
-                color: '#ff7f50' 
+                color: '#c9623d' 
             },
             {
                 name: playerTwoName,
@@ -78,7 +78,7 @@ function gameController(playerOneName, playerTwoName) {
         }
 
         if (winningCondition() !== null) {
-            console.log('The Winner is ' + getCurrentPlayer.name);
+            console.log('The Winner is ' + getCurrentPlayer().name);
             return getCurrentPlayer().name;
 
         } else if (board.getBoard().every(cell => cell.getValue() !== 0)) {
@@ -190,6 +190,10 @@ function displayController () {
                     placeMarkerBtns.forEach(button => {
                         button.disabled = true;
                     });
+                    gameBoardDisplay.classList.remove('gameBoardPlayerOne');
+                    gameBoardDisplay.classList.remove('gameBoardPlayerTwo');
+                    gameBoardDisplay.classList.add('gameBoardTie');
+                    
                     resetGame();
                 }
                 
@@ -198,7 +202,18 @@ function displayController () {
     });
     
     const displayWinner = (winner) => {
+        console.log(winner);
         gameStatus.innerText = 'The winner is ' + winner;
+        if (gameBoardDisplay.classList.contains('gameBoardPlayerTwo')) {
+            gameBoardDisplay.classList.remove('gameBoardPlayerTwo');
+            gameBoardDisplay.classList.add('gameBoardPlayerOne');
+            
+        } else {
+            gameBoardDisplay.classList.remove('gameBoardPlayerOne');
+            gameBoardDisplay.classList.add('gameBoardPlayerTwo');
+            
+            
+        }
         
     }
 
