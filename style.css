@@ -111,6 +111,7 @@ input:hover {
     background-color: var(--primary);
     border-radius: 2em;
     border: 0.65em solid var(--accent-one);
+    transition: box-shadow 0.35s ease-in-out;
 }
 
 .gameBoardPlayerOne {
@@ -122,7 +123,7 @@ input:hover {
 }
 
 #gameStatus {
-    color: var(--primary);
+    color: var(--accent-two);
     font-size: 32px;
 }
 
