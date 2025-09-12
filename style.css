@@ -4,8 +4,8 @@
     --accent-one: #3e2723; /*dark brown*/
     --accent-two: #ffb300; /*gold*/
     --accent-three: #ffebee; /*off-white*/
-    --playerOne-primary: #ff7518; /*electric cyan*/
-    --playerTwo-primary: #FF69b4; /*hot pink*/
+    --playerOne-primary: #ff7f50; /*electric cyan*/
+    --playerTwo-primary: #008b8b; /*hot pink*/
     --accent-three: #ffebee; /*off-pink*/
     --button-hover: #694a45;
 }
@@ -125,7 +125,7 @@ input:hover {
     height: 100%;
     text-align: center;
     line-height: 0;
-    background-color: var(--accent-three);
+    background-color: var(--button-hover);
     border-radius: 0.25em;
     border: 0.02em solid var(--accent-one);
     transform: scale(1);
