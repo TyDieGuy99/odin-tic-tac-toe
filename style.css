@@ -113,6 +113,14 @@ input:hover {
     border: 0.65em solid var(--accent-one);
 }
 
+.gameBoardPlayerOne {
+    box-shadow: 0 0 1.75em var(--playerOne-primary);
+}
+
+.gameBoardPlayerTwo {
+    box-shadow: 0 0 1.75em var(--playerTwo-primary);
+}
+
 #gameStatus {
     color: var(--primary);
     font-size: 32px;
