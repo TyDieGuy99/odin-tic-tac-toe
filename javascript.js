@@ -166,6 +166,7 @@ function displayController () {
         document.getElementById('playerOne').disabled = true;
         document.getElementById('playerTwo').disabled = true;
         playBtn.disabled = true;
+        gameBoardDisplay.classList.add('gameBoardPlayerOne');
     }
 
     placeMarkerBtns.forEach(button => {
@@ -176,6 +177,7 @@ function displayController () {
                 this.style.color = game.getCurrentPlayer().color;
                 const result = game.playTurn(button.id);
                 gameStatus.innerText = "It is " + game.getCurrentPlayer().name + `'s turn.`;
+                showCurrentPlayer();
                 console.log(result);
                 if (result && result !== 'tie') {
                     placeMarkerBtns.forEach(button => {
@@ -200,6 +202,16 @@ function displayController () {
         
     }
 
+    const showCurrentPlayer = () => {
+        if (gameBoardDisplay.classList.contains('gameBoardPlayerOne')) {
+            gameBoardDisplay.classList.remove('gameBoardPlayerOne');
+            gameBoardDisplay.classList.add('gameBoardPlayerTwo');
+        } else {
+            gameBoardDisplay.classList.remove('gameBoardPlayerTwo');
+            gameBoardDisplay.classList.add('gameBoardPlayerOne');
+        }
+    }
+
     const resetGame = () => {
         playBtn.textContent = 'Play Again!';
         playBtn.disabled = false;
@@ -207,6 +219,8 @@ function displayController () {
             game.resetGame();
             gameStatus.innerText = "It is " + game.getCurrentPlayer().name + `'s turn.`;
             playBtn.disabled = true;
+            gameBoardDisplay.classList.add('gameBoardPlayerOne');
+            gameBoardDisplay.classList.remove('gameBoardPlayerTwo');
             placeMarkerBtns.forEach(button => {
                 button.innerText = '';
                 button.disabled = false;
