@@ -8,7 +8,7 @@ const gameBoard = (function () {
         const placeMarker = (spot, player) => {
 
             if (board[spot].getValue() !== 0) {
-                return false; //this move dooesn't work
+                return false; //this move doesn't work
             }
 
             console.log('The square being played on is', spot + 1);
@@ -40,7 +40,7 @@ function cell() {
     return {addMark, getValue};
 }
 
-/* factory for controller gamestate, player turns, win con */
+/* factory for controlling gamestate, player turns, win con */
 function gameController(playerOneName, playerTwoName) {
     const board = gameBoard;
 
@@ -48,12 +48,12 @@ function gameController(playerOneName, playerTwoName) {
             {
                 name: playerOneName,
                 mark: 'X',
-                color: '#c9623d' 
+                color: '#c9623d' //based on css file's --playerOne-primary, change this if that changes
             },
             {
                 name: playerTwoName,
                 mark: 'O',
-                color: '#008b8b'
+                color: '#008b8b' //based on css file's --playerTwo-primary, change this if that changes
             }
     ];
 
@@ -71,7 +71,7 @@ function gameController(playerOneName, playerTwoName) {
 
     const playTurn = (spot) => {
         const moveSuccessful = board.placeMarker(spot, getCurrentPlayer().mark);
-        //check if current spot is taken
+        //check if current spot is taken, if not place token
         if (!moveSuccessful) {
             console.log('bad move');
             return; //if spot is taken, don't switch players
@@ -96,12 +96,15 @@ function gameController(playerOneName, playerTwoName) {
 
     const winningCondition = () => {
         const winningBoards = [
+            //rows
         [0, 1 ,2],
         [3, 4, 5],
         [6, 7 ,8],
+            //columns
         [0, 3, 6],
         [1, 4, 7],
         [2, 5, 8],
+            //diagnals
         [0, 4, 8],
         [2, 4, 6]
     ];
@@ -134,6 +137,7 @@ function gameController(playerOneName, playerTwoName) {
     
 }
 
+/* factory for changing display of the game, show player turn, take player name input, enable/disable buttons acordingly */
 function displayController () {
 
     let game = null;
@@ -147,6 +151,7 @@ function displayController () {
         button.disabled = true;
     })
 
+    //get player names from input fields, starts game
     playBtn.onclick = function() {
         let playerOne = document.getElementById('playerOne').value;
         if (playerOne=== "") {
@@ -156,12 +161,15 @@ function displayController () {
         if (playerTwo === "") {
             playerTwo = 'Player Two';
         }
+
         document.getElementById('playerOneLabel').innerText = playerOne + ': X'
         document.getElementById('playerTwoLabel').innerText = playerTwo + ': O'
         game = gameController(playerOne, playerTwo);
+
         placeMarkerBtns.forEach(button => {
             button.disabled = false;
         });
+
         gameStatus.innerText = "It is " + game.getCurrentPlayer().name + `'s turn.`;
         document.getElementById('playerOne').disabled = true;
         document.getElementById('playerTwo').disabled = true;
@@ -173,18 +181,22 @@ function displayController () {
         button.disabled = true;
         button.addEventListener('click', function() {
             if (this.innerText === '') {
+                //when player moves, update square to have text color matching player's color and place marker. show next players turn
                 this.innerText = game.getCurrentPlayer().mark;
                 this.style.color = game.getCurrentPlayer().color;
                 const result = game.playTurn(button.id);
                 gameStatus.innerText = "It is " + game.getCurrentPlayer().name + `'s turn.`;
                 showCurrentPlayer();
                 console.log(result);
+
+                //if a player wins
                 if (result && result !== 'tie') {
                     placeMarkerBtns.forEach(button => {
                         button.disabled = true;
                     });
                     displayWinner(result);
                     resetGame();
+                    //if the players tie
                 } else if (result && result === 'tie') {
                     gameStatus.innerText = 'The game is a tie!';
                     placeMarkerBtns.forEach(button => {
@@ -201,6 +213,7 @@ function displayController () {
         })
     });
     
+    //show winner on game status text, change glow effect of board for the winner
     const displayWinner = (winner) => {
         console.log(winner);
         gameStatus.innerText = 'The winner is ' + winner;
@@ -217,6 +230,7 @@ function displayController () {
         
     }
 
+    //update board's glow effect on player turn
     const showCurrentPlayer = () => {
         if (gameBoardDisplay.classList.contains('gameBoardPlayerOne')) {
             gameBoardDisplay.classList.remove('gameBoardPlayerOne');
@@ -227,6 +241,7 @@ function displayController () {
         }
     }
 
+    //disable everything besides the play again button, set all values back to original ones before game started
     const resetGame = () => {
         playBtn.textContent = 'Play Again!';
         playBtn.disabled = false;
