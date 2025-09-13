@@ -8,6 +8,16 @@
     --playerTwo-primary: #008b8b; /*hot pink*/
     --accent-three: #ffebee; /*off-pink*/
     --button-hover: #694a45;
+    --font: 'action_manregular', Arial, Helvetica, sans-serif;
+}
+
+@font-face {
+    font-family: 'action_manregular';
+    src: url('fonts/action_man-webfont.woff2') format('woff2'),
+         url('fonts/action_man-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
 }
 
 * {
@@ -22,7 +32,7 @@ body {
     background-color: var(--bg-primary);
     color: white;
     padding: 1em;
-}
+    font-family: var(--font);
 
 h1 {
     display: flex;
@@ -65,6 +75,7 @@ input:focus,
     background-color: var(--accent-one);
     border: 0.1275em solid var(--accent-two);
     transition: background-color 0.3s ease-in-out;
+    font-family: var(--font);
 }
 
 #playBtn:hover,
