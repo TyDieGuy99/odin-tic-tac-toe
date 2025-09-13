@@ -182,12 +182,16 @@ input:hover {
     .square {
         font-size: 8.75rem;
     }
+
+    h1 {
+        font-size: 1.2rem;
+    }
 }
 
 @media screen and (max-width: 400px) {
     #gameControls,
     #gameBoard {
-        padding: 0.25em
+        padding: 0.5em
     }
 
     #playerNames {
