@@ -30,6 +30,7 @@ h1 {
     align-items: center;
     text-align: center;
     color: var(--primary);
+    margin-top: 1em;
 }
 
 h3 {
@@ -155,10 +156,16 @@ input:hover {
     outline: none;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 675px) {
+    input,
+    label {
+    font-size: 1rem;
+    width: 75%;
+    margin: 0 auto;
+    }
+
     #playerNames {
-        display: flex;
-        flex-direction: column;
+        column-gap: 0.5em;
     }
 
     .square {
@@ -170,6 +177,10 @@ input:hover {
     #gameControls,
     #gameBoard {
         padding: 0.25em
+    }
+
+    #playerNames {
+        column-gap: 0;
     }
 
     h1,
