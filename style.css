@@ -1,12 +1,11 @@
 :root {
-    --bg-primary: #1b0000; /*deep espresso*/
-    --primary: #ff8550; /*coral*/
-    --accent-one: #3e2723; /*dark brown*/
-    --accent-two: #ffb300; /*gold*/
-    --accent-three: #ffebee; /*off-white*/
-    --playerOne-primary: #c9623d; /*electric cyan*/
-    --playerTwo-primary: #008b8b; /*hot pink*/
-    --accent-three: #ffebee; /*off-pink*/
+    --bg-primary: #1b0000;
+    --primary: #ff8550; 
+    --accent-one: #3e2723; 
+    --accent-two: #ffb300; 
+    --accent-three: #ffebee; 
+    --playerOne-primary: #c9623d; 
+    --playerTwo-primary: #008b8b;
     --button-hover: #694a45;
     --font: 'action_manregular', Arial, Helvetica, sans-serif;
 }
@@ -33,6 +32,7 @@ body {
     color: white;
     padding: 1em;
     font-family: var(--font);
+}
 
 h1 {
     display: flex;
@@ -57,6 +57,8 @@ label {
     font-size: 1.25rem;
     transition: background-color 0.3s ease-in-out;
 }
+
+/* game controls */
 
 input:focus,
 #playBtn:focus {
@@ -109,6 +111,13 @@ input:hover {
     color: var(--playerTwo-primary);
 }
 
+#gameStatus {
+    color: var(--accent-two);
+    font-size: 32px;
+}
+
+/* gameboard related */
+
 #gameBoard {
     display: grid;
     width: 80vw;
@@ -136,11 +145,6 @@ input:hover {
 
 .gameBoardTie {
     box-shadow: 0 0 1.75em var(--accent-two);
-}
-
-#gameStatus {
-    color: var(--accent-two);
-    font-size: 32px;
 }
 
 .square {
